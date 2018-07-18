@@ -7,6 +7,9 @@ var Spotify = require("node-spotify-api");
 var argumentOne = process.argv[2];
 var argumentTwo = process.argv.slice(3).join(" ");
 
+// I should have written the functions with parameters set, and written the logic to run based off them
+// If I did that I could compartmentalize the code and run any piece anywhere
+
 switch(argumentOne) {
     case "movie-this":
     retrieveMovie();
