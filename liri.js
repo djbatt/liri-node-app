@@ -11,6 +11,16 @@ switch(argumentOne) {
     case "movie-this":
     retrieveMovie();
     break;
+    case "my-tweets":
+    retrieveTweets();
+    break;
+    case "spotify-this-song":
+    retrieveSong();
+    break;
+    case "do-what-it-says":
+    runRandom();
+    break;
+    default: console.log("\n" + "These are the commands:\xa0" + "my-tweets, spotify-this-song, movie-this, do-what-it-says");
 }
 
 function retrieveMovie() {
