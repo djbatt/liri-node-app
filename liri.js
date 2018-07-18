@@ -2,10 +2,10 @@ var fs = require("fs");
 var request = require("request");
 var dotenv = require("dotenv").config();
 var keys = require("./keys");
-var twitter = require("twitter");
-var spotify = require("node-spotify-api");
+var Twitter = require("twitter");
+var Spotify = require("node-spotify-api");
 var argumentOne = process.argv[2];
-var argumentTwo = process.argv[3];
+var argumentTwo = process.argv.slice(3).join(" ");
 
 switch(argumentOne) {
     case "movie-this":
@@ -23,14 +23,38 @@ switch(argumentOne) {
     default: console.log("\n" + "These are the commands:\xa0" + "my-tweets, spotify-this-song, movie-this, do-what-it-says");
 }
 
+function retrieveSong() {
+    var spotify = new Spotify(keys.spotify);
+
+    if(!argumentTwo) {
+        argumentTwo = "The Sign";
+    }
+
+    spotify.search({ type: "track", query: argumentTwo }, function(err, data) {
+        if (err) {
+            console.log("error occured:\xa0" + err);
+            return;
+        } else {
+            var trackData = data.tracks.items[0];
+
+            var loggedSong = "\n" +
+            "Artist:\xa0" + trackData.artists[0].name + "\n" +
+            "Song Name:\xa0" + trackData.name + "\n" +
+            "Album Name:\xa0" + trackData.album.name + "\n" +
+            "Preview URL:\xa0" + trackData.album.external_urls.spotify +"\n";
+
+            console.log(loggedSong);
+            logResults(loggedSong);
+        }
+    });
+}
+
 function retrieveMovie() {
     if (!argumentTwo) {
         argumentTwo = "Annihilation"
     }
 
     var omdbURL = "http://www.omdbapi.com/?t=" + argumentTwo + "&y=&plot=short&r=json&tomatoes=true&apikey=trilogy";
-
-    console.log(omdbURL);
 
     
     request(omdbURL, function (error, response, body) {
@@ -39,7 +63,6 @@ function retrieveMovie() {
             console.log(error);
         } else {
             var movie = JSON.parse(body);
-            console.log(movie);
     
             var loggedMovie = "\n" +
             "Movie:\xa0" + movie.Title + "\n" +
@@ -49,8 +72,7 @@ function retrieveMovie() {
             "Language:\xa0" + movie.Language + "\n" +
             "Plot:\xa0" + movie.Plot + "\n" +
             "Actors:\xa0" + movie.Actors + "\n" +
-            "Tomato Rating:\xa0" + movie.tomatoRating + "\n" +
-            "Tomato URL:\xa0" + movie.tomatoURL + "\n";
+            "Tomato Rating:\xa0" + movie.tomatoRating + "\n";
 
             console.log(loggedMovie);
             logResults(loggedMovie);

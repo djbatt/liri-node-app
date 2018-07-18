@@ -18,3 +18,26 @@ Plot: A biologist signs up for a dangerous, secret expedition into a mysterious
 Actors: Natalie Portman, Benedict Wong, Sonoya Mizuno, David Gyasi
 Tomato Rating: N/A
 Tomato URL: https://www.rottentomatoes.com/m/annihilation
+
+Movie: Wag the Dog
+Year Released: 1997
+IMDB Rating: undefined
+Country: USA
+Language: English, Albanian
+Plot: Shortly before an election, a spin-doctor and a Hollywood producer join efforts to fabricate a war in order to cover up a Presidential sex scandal.
+Actors: Dustin Hoffman, Robert De Niro, Anne Heche, Woody Harrelson
+Tomato Rating: N/A
+
+Movie: EuroTrip
+Year Released: 2004
+IMDB Rating: undefined
+Country: USA, Czech Republic
+Language: English, French, German, Italian, Japanese
+Plot: Dumped by his girlfriend, a high school grad decides to embark on an overseas adventure in Europe with his friends.
+Actors: Scott Mechlowicz, Jacob Pitts, Kristin Kreuk, Cathy Meils
+Tomato Rating: N/A
+
+Artist: Grateful Dead
+Song Name: Shakedown Street
+Album Name: Shakedown Street
+Preview URL: https://open.spotify.com/album/0MLCxvyIfAuh5xwPORv8p6
