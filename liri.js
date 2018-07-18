@@ -110,6 +110,16 @@ function retrieveMovie() {
     })
 }
 
+function runRandom() {
+    fs.readFile("random.txt", "UTF-8", function(error, data) {
+        if (error) {
+            console.log(error);
+        } else {
+            retrieveSong();
+        }
+    })
+}
+
 function logResults(inputData) {
     fs.appendFile("log.txt", inputData, function(error) {
         if (error) {
