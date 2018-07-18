@@ -20,7 +20,37 @@ switch(argumentOne) {
     case "do-what-it-says":
     runRandom();
     break;
-    default: console.log("\n" + "These are the commands:\xa0" + "my-tweets, spotify-this-song, movie-this, do-what-it-says");
+    default: console.log("\n" + "These are the commands:\xa0" + "my-tweets, spotify-this-song, movie-this, do-what-it-says" + "\n" +
+    "my-tweets can take any screen name, spotify-this-song can take any song, and movie-this can take any movie");
+}
+
+function retrieveTweets() {
+
+    var twitter = new Twitter(keys.twitter);
+
+    if (!argumentTwo) {
+        argumentTwo = "tweetbot90011";
+    }
+
+    var parameters = { screen_name: argumentTwo, count: 20};
+
+    twitter.get("statuses/user_timeline", parameters, function(err, data, res) {
+
+        if (err) {
+            console.log(err);
+        } else {
+            for (var i = 0; i < data.length; i++) {
+                var loggedTweets = "\n" +
+                "Date and Time Posted:\xa0" + data[i].created_at + "\n" +
+                "Username:\xa0" + data[i].user.screen_name + "\n" +
+                "Tweet:\xa0" + data[i].text + "\n"
+                "Result Number:\xa0" + i + "\n";
+
+                console.log(loggedTweets);
+                logResults(loggedTweets);
+            }
+        }
+    })
 }
 
 function retrieveSong() {
